@@ -30,8 +30,6 @@ function makeSound(a){
             audio.play()
             break;
 
-        default:
-            console.log(buttonInnerHTML);
     }
 
 }
@@ -42,7 +40,7 @@ function buttonAnimation(currentKey){
 
     setTimeout(function(){
         activeButton.classList.remove("pressed");
-    }, 100);
+    }, 1000);
 }
 
 var numberOfButtons = document.querySelectorAll(".drum").length
