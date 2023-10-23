@@ -1,23 +1,3 @@
-var numberOfButtons = document.querySelectorAll(".drum").length
-for(var i = 0; i< numberOfButtons; i++){
-    document.querySelectorAll(".drum")[i].addEventListener("click", function (){
-        
-        //using switch to get the different cases
-
-        var buttonInnerHTML = this.innerHTML;
-        makeSound(buttonInnerHTML);
-    })
-}
-
-
-
-
-
-document.addEventListener("keydown", function(event){
-    makeSound(event.key);
-})
-
-
 function makeSound(a){
 
     switch (a){
@@ -55,3 +35,30 @@ function makeSound(a){
     }
 
 }
+
+function buttonAnimation(currentKey){
+    var activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
+
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
+
+var numberOfButtons = document.querySelectorAll(".drum").length
+for(var i = 0; i< numberOfButtons; i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click", function (){
+    
+        var buttonInnerHTML = this.innerHTML;
+        makeSound(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);
+
+    })
+}
+
+
+document.addEventListener("keydown", function(evt){
+    makeSound(evt.key);
+    buttonAnimation(evt.key)
+})
+
